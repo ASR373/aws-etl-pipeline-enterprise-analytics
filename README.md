@@ -1,5 +1,12 @@
-### ✅ Day 1 Progress – Step 4 Completed
-- Connected to AWS S3 using boto3
-- Ingestion + validation script created (`src/ingest_data.py`)
-- Script reads from raw S3 bucket and uploads cleaned data to staging bucket
-- Verified output in AWS Console
+# AWS ETL Pipeline – Enterprise Analytics
+
+### Day 1 Progress
+✅ GitHub repo and folders initialized  
+✅ Mock datasets created and uploaded to S3  
+✅ Ingestion + data validation script built  
+✅ Cleaned data written to staging S3 bucket  
+
+### Next Steps (Day 2)
+- Implement AWS Glue transformation job (PySpark)
+- Create Redshift schema and load transformed data
+- Begin Airflow DAG orchestration
