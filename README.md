@@ -10,3 +10,14 @@
 - Implement AWS Glue transformation job (PySpark)
 - Create Redshift schema and load transformed data
 - Begin Airflow DAG orchestration
+
+
+Upload → S3(staging)
+   ↓ triggers
+Lambda → starts Glue ETL
+   ↓
+Glue → writes Parquet to S3(processed)
+   ↓
+Glue Crawler → updates Data Catalog
+   ↓
+Athena → queries analytics data directly from S3
