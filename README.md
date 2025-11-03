@@ -6,7 +6,7 @@ This project demonstrates a **fully automated, serverless ETL (Extract–Transfo
 It ingests raw data into S3, transforms it using **AWS Glue**, orchestrates automation through **Lambda** and **EventBridge**, catalogs processed data with a **Glue Crawler**, and enables analytics directly from **Athena** — all with real-time monitoring and alerts.
 
 <p align="center">
-  <img src="docs/screenshots/pipeline_architechture.png" alt="AWS ETL Pipeline Architecture" width="650"/>
+  <img src="docs/screenshots/pipeline_architecture.png" alt="AWS ETL Pipeline Architecture" width="650"/>
 </p>
 
 ---
@@ -14,7 +14,7 @@ It ingests raw data into S3, transforms it using **AWS Glue**, orchestrates auto
 ## 🌐 Architecture Overview
 
 <p align="center">
-  <img src="docs/screenshots/pipeline_architecture.png" alt="AWS ETL Pipeline Architecture" width="650"/>
+  <img src="docs/staging_bucket.png" alt="AWS ETL Pipeline Architecture" width="650"/>
 </p>
 
 ### **Pipeline Flow**
