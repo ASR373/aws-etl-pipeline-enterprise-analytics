@@ -125,3 +125,111 @@ README.md → project overview (this file)
 - Writes transformed Parquet files to:
 
 #### s3://enterprise-processed-data373/customer_orders_analytics/
+
+Partitioned by `order_year`.
+
+<p align="center">
+<img src="docs/screenshots/glue_job_overview.png" alt="Glue Job Overview" width="650"/>
+</p>
+
+**Sample job run success:**
+<p align="center">
+<img src="docs/screenshots/glue_job_run_success.png" alt="Glue Job Run Success" width="650"/>
+</p>
+
+---
+
+### 📊 **4. S3 – Processed Data (Analytics Layer)**
+
+Processed, partitioned Parquet files stored here:  
+
+#### s3://enterprise-processed-data373/customer_orders_analytics/
+
+<p align="center">
+  <img src="docs/screenshots/s3_processed_output.png" alt="Processed Data in S3" width="700"/>
+</p>
+
+---
+
+### 📇 **5. AWS Glue Crawler – Data Catalog**
+
+- **Crawler name:** `processed_customer_orders_crawler`
+- Scans processed Parquet data and registers the schema in the **Glue Data Catalog**.
+- Automatically refreshes via **EventBridge** after every successful Glue ETL run.
+
+<p align="center">
+  <img src="docs/screenshots/glue_crawler_overview.png" alt="Glue Crawler Overview" width="650"/>
+</p>
+
+**Table schema created by crawler:**
+<p align="center">
+  <img src="docs/screenshots/glue_table_schema.png" alt="Glue Table Schema" width="650"/>
+</p>
+
+---
+
+### 🧩 **6. EventBridge – Automation Backbone**
+
+Two key rules:
+1. **ETL Scheduler:** Runs Glue ETL daily (or hourly).  
+2. **ETL Success → Trigger Crawler:** Automatically refreshes catalog after ETL success.
+
+<p align="center">
+  <img src="docs/screenshots/eventbridge_schedule_details.png" alt="EventBridge Scheduled Rule" width="700"/>
+</p>
+
+**Crawler trigger on job success:**
+<p align="center">
+  <img src="docs/screenshots/eventbridge_rule_glue_crawler.png" alt="EventBridge Glue Rule" width="700"/>
+</p>
+
+**Event execution log:**
+<p align="center">
+  <img src="docs/screenshots/eventbridge_crawler_trigger_success.png" alt="EventBridge Crawler Trigger Success" width="700"/>
+</p>
+
+---
+
+### 🧠 **7. Athena – Serverless Analytics**
+
+- Athena queries Parquet data from processed S3 bucket via Glue Data Catalog.
+- Sample Queries:
+
+```sql
+-- Preview
+SELECT * FROM enterprise_analytics_db.customer_orders_analytics LIMIT 10;
+
+-- Revenue by Region
+SELECT region, SUM(extended_price) AS total_revenue
+FROM enterprise_analytics_db.customer_orders_analytics
+GROUP BY region
+ORDER BY total_revenue DESC;
+
+-- Yearly Sales Trend
+SELECT order_year, SUM(extended_price) AS total_sales
+FROM enterprise_analytics_db.customer_orders_analytics
+GROUP BY order_year
+ORDER BY order_year;
+```
+
+Sample query results:
+
+<p align="center"> <img src="docs/screenshots/sample_query1.png" alt="Sample Query 1" width="600"/> <img src="docs/screenshots/sample_query_2.png" alt="Sample Query 2" width="600"/> <img src="docs/screenshots/sample_query_3.png" alt="Sample Query 3" width="600"/> </p>
+
+Athena Query Preview:
+
+<p align="center"> <img src="docs/screenshots/athena_query_preview.png" alt="Athena Query Preview" width="700"/> </p>
+
+### 🕕 8. Scheduled Run (Fully Automated)
+
+- EventBridge triggers ETL daily.
+
+- Glue job executes, processes data.
+
+- Crawler refreshes catalog automatically.
+
+- Athena reflects new data instantly.
+
+- Successful scheduled pipeline:
+
+<p align="center"> <img src="docs/screenshots/cloudwatch_success.png" alt="CloudWatch Success Log" width="700"/> </p>
