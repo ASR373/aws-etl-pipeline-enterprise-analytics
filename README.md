@@ -1,23 +1,16 @@
-# AWS ETL Pipeline – Enterprise Analytics
+# 🧭 AWS ETL Pipeline – Enterprise Analytics
 
-### Day 1 Progress
-✅ GitHub repo and folders initialized  
-✅ Mock datasets created and uploaded to S3  
-✅ Ingestion + data validation script built  
-✅ Cleaned data written to staging S3 bucket  
+### 🚀 End-to-End Serverless Data Engineering Project
 
-### Next Steps (Day 2)
-- Implement AWS Glue transformation job (PySpark)
-- Create Redshift schema and load transformed data
-- Begin Airflow DAG orchestration
+This project demonstrates a **fully automated, serverless ETL (Extract–Transform–Load) pipeline** built entirely on **AWS**.  
+It ingests raw data into S3, transforms it using **AWS Glue**, orchestrates automation through **Lambda** and **EventBridge**, catalogs processed data with a **Glue Crawler**, and enables analytics directly from **Athena** — all with real-time monitoring and alerts.
 
+---
 
-Upload → S3(staging)
-   ↓ triggers
-Lambda → starts Glue ETL
-   ↓
-Glue → writes Parquet to S3(processed)
-   ↓
-Glue Crawler → updates Data Catalog
-   ↓
-Athena → queries analytics data directly from S3
+## 🌐 Architecture Overview
+
+<p align="center">
+  <img src="docs/staging_bucket.png" alt="AWS ETL Pipeline Architecture" width="650"/>
+</p>
+
+### **Pipeline Flow**
