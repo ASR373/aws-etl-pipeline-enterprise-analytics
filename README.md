@@ -233,3 +233,25 @@ Athena Query Preview:
 - Successful scheduled pipeline:
 
 <p align="center"> <img src="docs/screenshots/cloudwatch_success.png" alt="CloudWatch Success Log" width="700"/> </p>
+
+### 🔔 9. Monitoring & Alerts
+
+CloudWatch Alarms monitor:
+
+Glue job failures (JobRunFailed ≥ 1)
+
+Lambda errors (Errors ≥ 1)
+
+SNS Topic: enterprise-pipeline-alerts
+
+Sends real-time email notifications for any failure.
+
+<p align="center"> <img src="docs/screenshots/new_data.png" alt="Monitoring Screenshot" width="650"/> </p>
+
+### 10. 📈 Athena – Updated Query After New Data
+
+When new data is uploaded or the schedule runs, Athena instantly reflects the latest records.
+
+Before and after comparison:
+
+<p align="center"> <img src="docs/screenshots/query_2_after_new_data.png" alt="Athena Query After New Data" width="650"/> </p>
