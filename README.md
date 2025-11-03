@@ -16,17 +16,31 @@ It ingests raw data into S3, transforms it using **AWS Glue**, orchestrates auto
 ### **Pipeline Flow**
 
 S3 (staging upload)
+
 ↓ triggers
+
 Lambda (trigger_glue_etl)
+
 ↓
+
 AWS Glue ETL Job (transform_staging_to_processed)
+
 ↓
+
 S3 (processed - Parquet output)
+
 ↓
+
 EventBridge → Lambda (trigger_glue_crawler)
+
 ↓
+
 Glue Crawler → Data Catalog
+
 ↓
+
 Athena SQL Queries / BI Dashboards
+
 ↓
+
 CloudWatch + SNS → Monitoring & Alerts
