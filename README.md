@@ -216,10 +216,6 @@ Sample query results:
 
 <p align="center"> <img src="docs/screenshots/sample_query1.png" alt="Sample Query 1" width="600"/> <img src="docs/screenshots/sample_query_2.png" alt="Sample Query 2" width="600"/> <img src="docs/screenshots/sample_query_3.png" alt="Sample Query 3" width="600"/> </p>
 
-Athena Query Preview:
-
-<p align="center"> <img src="docs/screenshots/athena_query_preview.png" alt="Athena Query Preview" width="700"/> </p>
-
 ### 🕕 8. Scheduled Run (Fully Automated)
 
 - EventBridge triggers ETL daily.
