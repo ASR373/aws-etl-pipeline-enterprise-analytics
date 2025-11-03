@@ -255,3 +255,27 @@ When new data is uploaded or the schedule runs, Athena instantly reflects the la
 Before and after comparison:
 
 <p align="center"> <img src="docs/screenshots/query_2_after_new_data.png" alt="Athena Query After New Data" width="650"/> </p>
+
+🧾 Key Learnings & Takeaways
+
+Designed a fully serverless, event-driven ETL pipeline using AWS native services.
+
+Implemented least privilege IAM roles for Lambda and Glue.
+
+Automated ETL + catalog refresh + daily scheduling via EventBridge.
+
+Transformed and stored optimized Parquet data.
+
+Enabled Athena as a cost-efficient serverless analytics layer.
+
+Added CloudWatch monitoring and SNS alerts for reliability.
+
+🧰 Future Enhancements
+
+Integrate Amazon QuickSight for visual dashboards.
+
+Add data validation using AWS Deequ or Great Expectations.
+
+Containerize ETL jobs for hybrid environments (Docker + Airflow).
+
+Add API Gateway + Lambda endpoint to trigger manual refreshes.
