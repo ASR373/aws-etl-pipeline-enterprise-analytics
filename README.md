@@ -199,19 +199,22 @@ Two key rules:
 
 ```sql
 -- Preview
-SELECT * FROM enterprise_analytics_db.customer_orders_analytics LIMIT 10;
+SELECT *
+FROM customer_orders_analytics
+LIMIT 5;
 
 -- Revenue by Region
-SELECT region, SUM(extended_price) AS total_revenue
-FROM enterprise_analytics_db.customer_orders_analytics
+SELECT region, round(SUM(extended_price), 2) AS total_revenue
+FROM customer_orders_analytics
 GROUP BY region
 ORDER BY total_revenue DESC;
 
 -- Yearly Sales Trend
-SELECT order_year, SUM(extended_price) AS total_sales
-FROM enterprise_analytics_db.customer_orders_analytics
-GROUP BY order_year
-ORDER BY order_year;
+SELECT product_description, ROUND(SUM(extended_price), 2)
+FROM customer_orders_analytics
+GROUP BY product_description
+ORDER BY total_sales DESC
+LIMIT 5;
 ```
 
 Sample query results:
